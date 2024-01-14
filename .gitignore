@@ -1,0 +1,9 @@
+venv
+.env
+my_account_session.session
+database.sqlite
+my_account_session.session-journal
+dump.rdb
+.idea
+.*pyc
+.*log
