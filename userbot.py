@@ -3,8 +3,14 @@ from contextlib import suppress
 from telethon import utils
 from telethon import events
 import re
-from start_bots import logger
 from config import client, bot, channel_id, db, admin_user_id
+import logging
+
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+
+logger = logging.getLogger(__name__)
+
+client.start()
 
 
 def get_triggers():
@@ -47,18 +53,4 @@ async def handler_group(event):
                                                            "Обратитесь к разработчику!")
 
 
-async def run_client():
-    await client.run_until_disconnected()
-
-
-async def run_userbot():
-    try:
-        await asyncio.gather(
-            asyncio.ensure_future(run_client())
-        )
-    except KeyboardInterrupt:
-        print("Бот остановлен по запросу пользователя.")
-    except Exception as e:
-        print(f"Произошла ошибка: {e}")
-    finally:
-        await client.disconnect()
+client.run_until_disconnected()

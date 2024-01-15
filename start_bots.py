@@ -1,5 +1,5 @@
 from aiogram.utils import executor
-from config import dp, db, client
+from config import dp, db
 import logging
 import bot
 
@@ -18,5 +18,5 @@ async def on_shutdown(dp):
 
 
 if __name__ == "__main__":
-    client.start()
     executor.start_polling(dp, on_shutdown=on_shutdown, on_startup=on_startup)
+
