@@ -8,7 +8,6 @@ from state.state import AddTrigger, DeleteTrigger
 @dp.message_handler(commands=['start'])
 async def start_command(message: types.Message):
     user_id = str(message.from_user.id)
-
     if user_id == admin_user_id:
         await set_default_commands(dp)
         await message.answer(f"Список команд ниже)", parse_mode=types.ParseMode.HTML)
